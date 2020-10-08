@@ -1,0 +1,27 @@
+.CircleButton {
+  height: 3.5em;
+  width: 3.5em;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #9219d8;
+  transform-origin: bottom;
+  padding: 5px;
+  margin: 45px;
+}
+
+.AddNote {
+  display: inline-flex;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 15%;
+  cursor: pointer;
+  background-color: #9219d8;
+  padding: 5px;
+}

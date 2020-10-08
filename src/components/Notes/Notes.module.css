@@ -1,0 +1,41 @@
+.NotesContainer {
+  margin: auto;
+  border: 2px solid red;
+  padding: 20px;
+}
+
+.NotesMasonry {
+  margin: 1em auto;
+  max-width: 768px;
+  column-gap: 0.5em;
+}
+
+/* The Masonry Brick */
+.NotesItem {
+  color: grey;
+  background: #fff;
+  display: inline-block;
+  padding: 1em;  
+  margin: 0 0.5em 1em;
+}
+
+/* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+  .NotesMasonry {
+    column-count: 4;
+  }
+}
+
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .NotesMasonry {
+    column-count: 3;
+  }
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 400px) {
+  .NotesMasonry {
+    column-count: 2;
+  }
+}

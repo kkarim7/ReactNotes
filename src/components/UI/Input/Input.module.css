@@ -1,0 +1,30 @@
+.Input {
+  display: inline-flex;
+  flex-flow: column;
+  margin-bottom: 15px;
+  border-style: hidden;
+  background-color: rgb(54, 54, 54);
+  font-size: x-large;
+}
+
+.Input:focus {
+  outline: none;
+}
+
+.Label {
+  display: block;
+  margin-bottom: 12px;
+  margin-top: 25px;
+}
+
+@media (max-width: 500px) {
+  .Input {
+    display: inline-flex;
+    flex-flow: column;
+    margin: 10px;
+  }
+
+  .Label {
+    margin-bottom: 5px;
+  }
+}
