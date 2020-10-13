@@ -1,7 +1,11 @@
 .NotesContainer {
   margin: auto;
-  border: 2px solid red;
-  padding: 20px;
+  padding: 1em;
+}
+
+.ModalBackground {
+  opacity: 0.8;
+  background-color: black;
 }
 
 .NotesMasonry {
@@ -13,10 +17,12 @@
 /* The Masonry Brick */
 .NotesItem {
   color: grey;
-  background: #fff;
   display: inline-block;
-  padding: 1em;  
-  margin: 0 0.5em 1em;
+  padding: 1em;
+}
+
+.NotesItem:hover {
+  cursor: pointer;
 }
 
 /* Masonry on large screens */

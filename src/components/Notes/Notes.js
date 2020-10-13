@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import Aux from "../../hoc/Aux";
 import classes from "./Notes.module.css";
 import Button from "../UI/Button/Button";
 import Modal from "../UI/Modal/Modal";
 import Input from "../UI/Input/Input";
-import NoteItem from "./NoteItem/NoteItem";
+import Card from "../UI/Card/Card";
+import Backdrop from "../UI/Backdrop/Backdrop";
+import Aux from "../../hoc/Aux";
 
 const Notes = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -50,6 +51,10 @@ const Notes = (props) => {
     setShowModal(!showModal);
   };
 
+  const onBackdropClickHandler = () => {
+    setShowModal(false);
+  };
+
   const addNoteHandler = () => {
     let notes = [...note];
     notes.push(currentNote);
@@ -59,30 +64,30 @@ const Notes = (props) => {
   };
 
   const deleteNoteHandler = (indexToDelete) => {
-    let notes = [...note].filter((thatNote, index) => index !== indexToDelete);
+    let notes = [...note].filter((notes, index) => index !== indexToDelete);
     setNote(notes);
+    setNoteEditing(null);
   };
 
   let noteItemContent = note.map((notes, index) => (
     <div className={classes.NotesItem} key={index}>
       {noteEditing === null || noteEditing !== index ? (
-        <Aux>
-          <div onClick={() => initNoteEditingHandler(index)}>{notes}</div>
-          <Button clicked={() => initNoteEditingHandler(index)}>Edit</Button>
-          <Button clicked={() => deleteNoteHandler(index)}>Delete</Button>
-        </Aux>
+        <Card clicked={() => initNoteEditingHandler(index)}>{notes}</Card>
       ) : (
-        <div>
-          <Modal show={!showModal}>
-            <Input
-              value={currentEdit}
-              changed={(event) => editNoteHandler(event)}
-              placeholder="Edit Note"
-            />
-            <Button clicked={() => submitEditHandler(index)}>Done</Button>
-            <Button clicked={() => deleteNoteHandler(index)}>Delete</Button>
-          </Modal>
-        </div>
+        <Card>
+          <Input
+            inputType="paragraph"
+            value={currentEdit}
+            changed={(event) => editNoteHandler(event)}
+            placeholder="Edit Note"
+          />
+          <Button submitNewNote clicked={() => submitEditHandler(index)}>
+            <h3>Done</h3>
+          </Button>
+          <Button submitNewNote clicked={() => deleteNoteHandler(index)}>
+            <h3>Delete</h3>
+          </Button>
+        </Card>
       )}
     </div>
   ));
@@ -105,25 +110,25 @@ const Notes = (props) => {
 
   return (
     <Aux>
-      <h1>Notes App</h1>
-      <Modal show={showModal}>
-        <Input
-          value={currentNote}
-          changed={(event) => setCurrentNote(event.target.value)}
-          placeholder="Note"
-        />
-        <Button
-          clicked={() => {
-            onClickHandler();
-            addNoteHandler();
-          }}
-          submitNewNote
-        >
-          <h2>Add Note</h2>
-        </Button>
-      </Modal>
       <div className={classes.NotesContainer}>
-        <div className={classes.NotesMasonry}>{noteItemContent}</div>
+        <h1>Notes App</h1>
+        <Modal show={showModal}>
+          <Input
+            value={currentNote}
+            changed={(event) => setCurrentNote(event.target.value)}
+            placeholder="Note"
+          />
+          <Button
+            clicked={() => {
+              onClickHandler();
+              addNoteHandler();
+            }}
+            submitNewNote
+          >
+            <h2>Add Note</h2>
+          </Button>
+        </Modal>
+        <Backdrop clicked={onBackdropClickHandler}>{noteItemContent}</Backdrop>
         <Button clicked={onClickHandler}>+</Button>
       </div>
     </Aux>

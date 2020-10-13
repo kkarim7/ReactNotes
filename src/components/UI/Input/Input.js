@@ -7,15 +7,30 @@ const input = (props) => {
 
   let inputClasses = [classes.Input];
 
-  inputElement = (
-    <input
-      className={inputClasses}
-      type="text"
-      value={props.value}
-      placeholder={props.placeholder}
-      onChange={props.changed}
-    />
-  );
+  switch (props.inputType) {
+    case "paragraph":
+      inputElement = (
+        <textarea
+          className={inputClasses}
+          value={props.value}
+          placeholder={props.placeholder}
+          onChange={props.changed}
+          label={props.label}
+        />
+      );
+      break;
+    default:
+      inputElement = (
+        <input
+          className={inputClasses}
+          type="text"
+          value={props.value}
+          placeholder={props.placeholder}
+          onChange={props.changed}
+          label={props.label}
+        />
+      );
+  }
 
   return (
     <div>

@@ -1,0 +1,12 @@
+.Card {
+  box-shadow: 0 4px 8px 0 black;
+  transition: 200ms;
+  background-color: rgb(22, 50, 61);
+  display: inline-block;
+  padding: 1em;  
+}
+
+.Card:hover {
+  box-shadow: 0 8px 16px 0 pink;
+  cursor: pointer;
+}

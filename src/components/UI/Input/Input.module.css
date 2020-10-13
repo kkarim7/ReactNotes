@@ -3,6 +3,7 @@
   flex-flow: column;
   margin-bottom: 15px;
   border-style: hidden;
+  color: grey;
   background-color: rgb(54, 54, 54);
   font-size: x-large;
 }
@@ -15,6 +16,7 @@
   display: block;
   margin-bottom: 12px;
   margin-top: 25px;
+  color: grey;
 }
 
 @media (max-width: 500px) {
